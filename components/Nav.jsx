@@ -10,9 +10,6 @@ export default function Nav() {
 				<Hamburger />
 			</div>
 			<div className="nav_options">
-				Student Portal
-			</div>
-			<div className="nav_options">
 				christian
 			</div>
 		</div>

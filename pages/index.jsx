@@ -49,7 +49,7 @@ export default function Home() {
                 <div className="dash_item_details">
                   <h1>8</h1>
                   <div>Subject/s Enrolled</div>
-                  <div>View Schedule</div>
+                  <div>View Schedule <i className="fad fa-eye"></i></div>
                 </div>
               </div>
               <div className="dash_item">
@@ -57,7 +57,7 @@ export default function Home() {
                 <div className="dash_item_details">
                   <h1>8</h1>
                   <div>Total Unit/s</div>
-                  <div>View Schedule</div>
+                  <div>View Schedule <i className="fad fa-eye"></i></div>
                 </div>
               </div>
               <div className="dash_item">
@@ -65,7 +65,7 @@ export default function Home() {
                 <div className="dash_item_details">
                   <h1>8</h1>
                   <div>GPA</div>
-                  <div>View Grades</div>
+                  <div>View Grades <i className="fad fa-eye"></i></div>
                 </div>
               </div>
               <div className="dash_item">
@@ -73,7 +73,7 @@ export default function Home() {
                 <div className="dash_item_details">
                   <h1>8</h1>
                   <div>Balance</div>
-                  <div>View Assessment</div>
+                  <div>View Assessment <i className="fad fa-eye"></i></div>
                 </div>
               </div>
             </div>
