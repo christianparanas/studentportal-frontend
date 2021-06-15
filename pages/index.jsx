@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
+import { useSwipeable } from 'react-swipeable'
 
 // components
 import Nav from '../components/Nav'
@@ -15,6 +16,7 @@ import Peso from '../components/svg/Peso'
 
 export default function Home() {
 
+
   // media queries
   const isDesktopOrLaptop = useMediaQuery({
     query: '(min-device-width: 451px)'
@@ -23,6 +25,7 @@ export default function Home() {
   const isMobile = useMediaQuery({
     query: '(max-device-width: 450px)'
   })
+
 
   return (
     <div className="home">
@@ -39,7 +42,7 @@ export default function Home() {
 
       {isMobile && 
         <>
-          <Nav />
+          <Nav page={1} />
           <div className="dash_wrapper">
             
 

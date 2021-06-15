@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Squeeze  as Hamburger } from 'hamburger-react'
 
 
-export default function Nav() {
+export default function Nav( props ) {
 	const [isOpen, setOpen] = useState(false)
 
 	// class vars
@@ -15,13 +15,19 @@ export default function Nav() {
 		setOpen(false)
 	}
 
+	const openSidebar = () => {
+		setClickoutside('clickoutside_overlay show_clickoutside_overlay')
+		setSidebar('nav_sidebar show_nav_sidebar')
+	}
+
 	useEffect(() => {
 		if(isOpen) {
-			setClickoutside('clickoutside_overlay show_clickoutside_overlay')
-			setSidebar('nav_sidebar show_nav_sidebar')
+			openSidebar()
 		} 
 
 	}, [isOpen])
+
+
 
 	return (
 		<div className="nav">
@@ -42,7 +48,7 @@ export default function Nav() {
 				</div>
 
 				<div className="nav_sidebar_options">
-					<div className="nav_sidebar_op">
+					<div className={`nav_sidebar_op ${ props.page == 1 ? 'currentpage' : ''}`}>
 						<i className="fal fa-desktop-alt"></i>
 					  Dashboard
 					</div>
