@@ -36,7 +36,7 @@ export default function Login() {
 					<form action="">
 						<input type="text" placeholder="Student ID" />
 						<input type="password" placeholder="Password" />
-						<input type="submit" value="Login" />
+						<button>Login <i className="fad fa-sign-in"></i></button>
 					</form>
 				</div>
 			}
