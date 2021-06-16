@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
-import { useSwipeable } from 'react-swipeable'
 
 // components
 import Nav from '../components/Nav'

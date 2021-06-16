@@ -1,8 +1,10 @@
 import Head from "next/head";
 
+import '../styles/login.scss'
 import '../styles/globals.scss'
 import '../styles/nav.scss'
 import '../styles/dashboard.scss'
+
 
 function MyApp({ Component, pageProps }) {
   return (
