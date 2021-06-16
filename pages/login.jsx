@@ -1,11 +1,18 @@
 
-import Student from '../components/svg/Student'
-
 import { useMediaQuery } from 'react-responsive'
+import axios from 'axios' 
+import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+
+
+import Student from '../components/svg/Student'
 
 
 export default function Login() {
+	const { register, handleSubmit, watch, errors } = useForm();
+
 
 	  // media queries
   const isDesktopOrLaptop = useMediaQuery({
@@ -16,8 +23,22 @@ export default function Login() {
     query: '(max-device-width: 450px)'
   })
 
+
+  const onSubmit = (data, e) => {
+
+  	axios.post(process.env.BACKEND_BASEURL + "/login", {
+  		studentID: data.studentID,
+  		password: data.password
+
+  	}).then((res) => {
+  		console.log(res)
+  		toast.success(`Your GPA: ${res.data.scrapedData}`, { autoClose: 5000 });
+  	})
+  }
+
 	return (
 		<div className="login">
+			<ToastContainer />
 
 			{isDesktopOrLaptop && 
         <div className="desktop_under_construct">
@@ -33,15 +54,13 @@ export default function Login() {
 					</div>
 
 
-					<form action="">
-						<input type="text" placeholder="Student ID" />
-						<input type="password" placeholder="Password" />
+					<form onSubmit={handleSubmit(onSubmit)}>
+						<input type="text" {...register('studentID', { required: true })} placeholder="Student ID" />
+						<input type="password" {...register('password', { required: true })}  placeholder="Password" />
 						<button>Login <i className="fad fa-sign-in"></i></button>
 					</form>
 				</div>
 			}
-
-
 
 		</div>
 	)
