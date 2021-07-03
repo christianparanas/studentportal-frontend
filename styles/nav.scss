@@ -4,6 +4,25 @@
 	width: 100%;
 	z-index: 10;
 
+	.logo {
+		display: flex;
+		justify-content: center;
+		background: #230958;
+		padding: 6px;
+		color: #fff;
+
+		svg {
+			width: 40px;
+			height: 40px;
+		}
+
+		p {
+			box-sizing: border-box;
+			
+			font-size: 12px;
+		}
+	}
+
 	.nav_btns {
 		display: flex;
 		justify-content: space-between;
@@ -13,7 +32,20 @@
 		color: white;
 
 		.nav_options {
+			display: flex;
+			align-items: center;
 
+			img {
+				height: 35px;
+				width: 35px;
+				margin-right: 8px;
+				border-radius: 50%;
+			}
+
+			i {
+				box-sizing: border-box;
+				margin: 0 0 5px 8px;
+			}
 		}
 	}
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Squeeze  as Hamburger } from 'hamburger-react'
-
+import Student from './svg/Student'
 
 export default function Nav( props ) {
 	const [isOpen, setOpen] = useState(false)
@@ -31,20 +31,25 @@ export default function Nav( props ) {
 
 	return (
 		<div className="nav">
-			
+
+			<div className="logo">
+				<Student />
+				<p>Student Portal</p>
+			</div>
 			<div className="nav_btns">
 				<div className="nav_options">
 					<Hamburger toggled={isOpen} toggle={setOpen} />
 				</div>
 				<div className="nav_options">
-					christian
+					<img src="https://apps.evsu.edu.ph/assets/img/students/2018/2018-02022-e121351d79e353eebe8338eab204a2fe.jpg" alt="" />
+					christian <i className="far fa-sort-down"></i>
 				</div>
 			</div>
 
 			<div className={clickoutside} onClick={closeSidebar}></div>
 			<div className={sidebar}>
 				<div className="header">
-					Christian
+					Christian 
 				</div>
 
 				<div className="nav_sidebar_options">
