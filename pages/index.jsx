@@ -44,7 +44,10 @@ export default function Home() {
           <Nav page={1} />
           <div className="dash_wrapper">
             
-
+            <div className="header">
+              <h3>Dashboard</h3>
+              <h4>SY: 2020-2021 SEM: 1</h4>
+            </div>
             <div className="dash_items">
               <div className="dash_item">
                 <Book />
