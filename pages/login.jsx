@@ -32,7 +32,7 @@ export default function Login() {
 
   	}).then((res) => {
   		console.log(res)
-  		toast.success(`Your GPA: ${res.data.scrapedData}`, { autoClose: 5000 });
+  		toast.success(`Your GPA: ${res.data.msg}`, { autoClose: 4000 });
   	})
   }
 
