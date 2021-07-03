@@ -46,21 +46,19 @@ export default function Login() {
         </div>
       }
 			
-			{isMobile && 
-				<div className="content_wrapper">
-					<div className="header">
-						<Student />
-						Student Portal
-					</div>
-
-
-					<form onSubmit={handleSubmit(onSubmit)}>
-						<input type="text" {...register('studentID', { required: true })} placeholder="Student ID" />
-						<input type="password" {...register('password', { required: true })}  placeholder="Password" />
-						<button>Login <i className="fad fa-sign-in"></i></button>
-					</form>
+			<div className="content_wrapper">
+				<div className="header">
+					<Student />
+					Student Portal
 				</div>
-			}
+
+
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<input type="text" {...register('studentID', { required: true })} placeholder="Student ID" />
+					<input type="password" {...register('password', { required: true })}  placeholder="Password" />
+					<button>Login <i className="fad fa-sign-in"></i></button>
+				</form>
+			</div>
 
 		</div>
 	)
