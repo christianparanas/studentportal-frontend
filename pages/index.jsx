@@ -46,7 +46,7 @@ export default function Home() {
             
             <div className="header">
               <h3>Dashboard</h3>
-              <h4>SY: 2020-2021 SEM: 1</h4>
+              <h5>SY: 2020-2021 SEM: 1</h5>
             </div>
             <div className="dash_items">
               <div className="dash_item">
