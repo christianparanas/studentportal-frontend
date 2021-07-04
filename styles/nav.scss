@@ -115,7 +115,7 @@
 			}
 
 			.fa-sort-up {
-				margin: 0 0 -12px 8px;
+				margin: 0 0 -8px 8px;
 			}
 		}
 	}
@@ -147,7 +147,46 @@
 		transition: all .3s ease;
 
 		.header {
-			margin-top: 20px;
+			margin-top: 10px;
+			display: flex;
+
+			img {
+				width: 54px;
+				height: 54px;
+				border-radius: 50%;
+				margin-right: 8px;
+			}
+
+			.side {
+				p {
+					margin: 0 0 3px 0;
+					font-size: 14px;
+				}
+
+				.ops {
+					width: fit-content;
+					padding: 5px 5px;
+					color: white;
+					background: #310F74;
+					border-radius: 12px;
+					position: relative;
+
+					.fal {
+						margin-right: 5px;
+					}
+
+					.fad {
+						background: #ff5757;
+						border-radius: 10px;
+					}
+
+					i {
+						position: relative;
+						padding: 5px;
+
+					}
+				}
+			}
 		}
 
 
@@ -160,10 +199,10 @@
 				display: grid;
 				grid-template-columns: 25px 1fr;
 				align-items: center;
-				padding: 12px 10px;
+				padding: 12px 12px;
 				grid-gap: 5px;
 				transition: all .3s ease;
-				border-radius: 15px;
+				border-radius: 14px;
 				font-size: 15px;
 
 				&:hover {

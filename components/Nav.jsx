@@ -86,7 +86,14 @@ export default function Nav( props ) {
 			<div className={clickoutside} onClick={closeSidebar}></div>
 			<div className={sidebar}>
 				<div className="header">
-					Christian 
+					<img src={dashItems.userImg} alt="Student Image" />
+					<div className="side">
+						<p>{dashItems.username}</p>
+						<div className="ops">
+							<i className="fal fa-cog"></i>
+							<i className="fad fa-sign-out"></i> 
+						</div>
+					</div>
 				</div>
 
 				<div className="nav_sidebar_options">
