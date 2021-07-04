@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useContext } from 'react'
 import { useMediaQuery } from 'react-responsive'
+
+// contexts
+import { DashContext } from '../contexts/DashContext.js'
 
 // components
 import Nav from '../components/Nav'
@@ -14,6 +17,7 @@ import Peso from '../components/svg/Peso'
 
 
 export default function Home() {
+  const { dashItems, setDashItems } = useContext(DashContext)
 
 
   // media queries
@@ -24,6 +28,10 @@ export default function Home() {
   const isMobile = useMediaQuery({
     query: '(max-device-width: 450px)'
   })
+
+  useEffect(() => {
+    console.log(dashItems)
+  }, [])
 
 
   return (
@@ -52,7 +60,7 @@ export default function Home() {
               <div className="dash_item">
                 <Book />
                 <div className="dash_item_details">
-                  <h1>8</h1>
+                  {dashItems ? (<h1>{dashItems[0]}</h1>) : (<h1>0</h1>)}
                   <div>Subject/s Enrolled</div>
                   <div>View Schedule <i className="fad fa-eye"></i></div>
                 </div>
@@ -60,7 +68,7 @@ export default function Home() {
               <div className="dash_item">
                 <Ruler />
                 <div className="dash_item_details">
-                  <h1>8</h1>
+                  {dashItems ? (<h1>{dashItems[1]}</h1>) : (<h1>0</h1>)}
                   <div>Total Unit/s</div>
                   <div>View Schedule <i className="fad fa-eye"></i></div>
                 </div>
@@ -68,7 +76,7 @@ export default function Home() {
               <div className="dash_item">
                 <Graph />
                 <div className="dash_item_details">
-                  <h1>8</h1>
+                  {dashItems ? (<h1>{dashItems[2]}</h1>) : (<h1>0</h1>)}
                   <div>GPA</div>
                   <div>View Grades <i className="fad fa-eye"></i></div>
                 </div>
@@ -76,7 +84,7 @@ export default function Home() {
               <div className="dash_item">
                 <Peso />
                 <div className="dash_item_details">
-                  <h1>8</h1>
+                  {dashItems ? (<h1>{dashItems[3]}</h1>) : (<h1>0</h1>)}
                   <div>Balance</div>
                   <div>View Assessment <i className="fad fa-eye"></i></div>
                 </div>

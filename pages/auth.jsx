@@ -1,18 +1,24 @@
-
+import { useRouter } from 'next/router'
 import { useMediaQuery } from 'react-responsive'
 import axios from 'axios' 
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useState, useContext } from 'react'
 
+// contexts
+import { DashContext } from '../contexts/DashContext.js'
 
-
+// conponents
 import Student from '../components/svg/Student'
 
 
 export default function Login() {
+	const router = useRouter()
 	const { register, handleSubmit, watch, errors } = useForm();
 
+	// using the context
+	const { dashItems, setDashItems } = useContext(DashContext)
 
 	  // media queries
   const isDesktopOrLaptop = useMediaQuery({
@@ -29,9 +35,14 @@ export default function Login() {
   		studentID: data.studentID,
   		password: data.password
 
-  	}).then((res) => {
-  		console.log(res)
-  		toast.success(`Your GPA: ${res.data.msg}`, { autoClose: 4000 });
+  	}).then( async (res) => {
+  		console.log(res.data)
+  		await setDashItems(res.data.dashItems)
+  		toast.success("Logging In..", { autoClose: 3000 });
+  		setTimeout(() => router.push("/"), 3000)
+  	})
+  	.catch((err) => {
+  		if(err.response.status == 401) { toast.error("Invalid Credentials", { autoClose: 3000 })}
   	})
   }
 
@@ -54,7 +65,7 @@ export default function Login() {
 
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<input type="text" {...register('studentID', { required: true })} placeholder="Student ID" />
-					<input type="password" {...register('password', { required: true })}  placeholder="Password" />
+					<input type="password" current-password="true" {...register('password', { required: true })}  placeholder="Password" />
 					<button>Login <i className="fad fa-sign-in"></i></button>
 				</form>
 			</div>

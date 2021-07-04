@@ -4,9 +4,13 @@ import '../styles/login.scss'
 import '../styles/globals.scss'
 import '../styles/nav.scss'
 import '../styles/dashboard.scss'
+import { DashContext } from '../contexts/DashContext.js'
 
+import { useState } from 'react'
 
 function MyApp({ Component, pageProps }) {
+  const [dashItems, setDashItems] = useState([])
+
   return (
     <>
       <Head>
@@ -14,7 +18,9 @@ function MyApp({ Component, pageProps }) {
         <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@bf7775b/css/all.css" rel="stylesheet" type="text/css" />
       </Head>
 
-      <Component {...pageProps} />
+      <DashContext.Provider value={{ dashItems, setDashItems }}>
+        <Component {...pageProps} />
+      </DashContext.Provider>
     </>
   )
 }
