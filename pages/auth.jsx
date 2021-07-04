@@ -17,6 +17,10 @@ export default function Login() {
 	const router = useRouter()
 	const { register, handleSubmit, watch, errors } = useForm();
 
+	// login btn loader
+	const [loginLoader, setLoginLoader] = useState("loader")
+	const [loginLoaderTxt, setLoginLoaderTxt] = useState("loginTxtnIco")
+
 	// using the context
 	const { dashItems, setDashItems } = useContext(DashContext)
 
@@ -29,19 +33,33 @@ export default function Login() {
     query: '(max-device-width: 450px)'
   })
 
+  const onLoginShowLoader = () => {
+  	setLoginLoaderTxt("loginTxtnIco hideLoginTxtnIco")
+  	setLoginLoader("loader showLoginLoader")
+  }
+
+  const onLoginHideLoader = () => {
+  	setLoginLoaderTxt(" loginTxtnIco")
+  	setLoginLoader("loader")
+  }
+
 
   const onSubmit = (data, e) => {
+  	onLoginShowLoader()
+
   	axios.post(process.env.BACKEND_BASEURL + "/login", {
   		studentID: data.studentID,
   		password: data.password
 
   	}).then( async (res) => {
   		console.log(res.data)
-  		await setDashItems(res.data.dashItems)
+  		setDashItems(res.data.dashItems)
   		toast.success("Logging In..", { autoClose: 3000 });
+  		onLoginHideLoader()
   		setTimeout(() => router.push("/"), 3000)
   	})
   	.catch((err) => {
+  		onLoginHideLoader()
   		if(err.response.status == 401) { toast.error("Invalid Credentials", { autoClose: 3000 })}
   	})
   }
@@ -62,11 +80,10 @@ export default function Login() {
 					Student Portal
 				</div>
 
-
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<input type="text" {...register('studentID', { required: true })} placeholder="Student ID" />
 					<input type="password" current-password="true" {...register('password', { required: true })}  placeholder="Password" />
-					<button>Login <i className="fad fa-sign-in"></i></button>
+					<button><p className={loginLoaderTxt}>Login</p><i className={`fad fa-sign-in ${loginLoaderTxt}`}></i><div className={loginLoader}></div></button>
 				</form>
 			</div>
 
