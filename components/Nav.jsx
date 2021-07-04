@@ -1,9 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Squeeze  as Hamburger } from 'hamburger-react'
+
+// components
 import Student from './svg/Student'
+
+// contexts
+import { DashContext } from '../contexts/DashContext.js'
+
 
 export default function Nav( props ) {
 	const [isOpen, setOpen] = useState(false)
+	const { dashItems, setDashItems } = useContext(DashContext)
 
 	// class vars
 	const [sidebar, setSidebar] = useState('nav_sidebar')
@@ -58,14 +65,14 @@ export default function Nav( props ) {
 					<Hamburger toggled={isOpen} toggle={setOpen} />
 				</div>
 				<div className="nav_options nav_click" onClick={openDrop}>
-					<img src="https://apps.evsu.edu.ph/assets/img/students/2018/2018-02022-e121351d79e353eebe8338eab204a2fe.jpg" alt="" />
-					christian <i className={dropIco}></i>
+					<img src={dashItems.userImg} alt="Student Image" />
+					{dashItems.username} <i className={dropIco}></i>
 				</div>
 
 				<div className={dropOv}>
 					<div className="dropImg">
-						<img src="https://apps.evsu.edu.ph/assets/img/students/2018/2018-02022-e121351d79e353eebe8338eab204a2fe.jpg" alt="" />
-						<p>Christian</p>
+						<img src={dashItems.userImg} alt="Student Image" />
+						<p>{dashItems.username}</p>
 					</div>
 					<div className="dropOp">
 						<div className="op"><i className="fal fa-image-polaroid"></i> Update Photo</div>

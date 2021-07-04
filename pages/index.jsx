@@ -74,7 +74,7 @@ export default function Home() {
                   <div className="dash_item">
                     <Book />
                     <div className="dash_item_details">
-                      {dashItems ? (<h1>{dashItems[0]}</h1>) : (<h1>0</h1>)}
+                      {dashItems ? (<h1>{dashItems.count[0]}</h1>) : (<h1>0</h1>)}
                       <div>Subject/s Enrolled</div>
                       <div>View Schedule <i className="fad fa-eye"></i></div>
                     </div>
@@ -82,7 +82,7 @@ export default function Home() {
                   <div className="dash_item">
                     <Ruler />
                     <div className="dash_item_details">
-                      {dashItems ? (<h1>{dashItems[1]}</h1>) : (<h1>0</h1>)}
+                      {dashItems ? (<h1>{dashItems.count[1]}</h1>) : (<h1>0</h1>)}
                       <div>Total Unit/s</div>
                       <div>View Schedule <i className="fad fa-eye"></i></div>
                     </div>
@@ -90,7 +90,7 @@ export default function Home() {
                   <div className="dash_item">
                     <Graph />
                     <div className="dash_item_details">
-                      {dashItems ? (<h1>{dashItems[2]}</h1>) : (<h1>0</h1>)}
+                      {dashItems ? (<h1>{dashItems.count[2]}</h1>) : (<h1>0</h1>)}
                       <div>GPA</div>
                       <div>View Grades <i className="fad fa-eye"></i></div>
                     </div>
@@ -98,7 +98,7 @@ export default function Home() {
                   <div className="dash_item">
                     <Peso />
                     <div className="dash_item_details">
-                      {dashItems ? (<h1>{dashItems[3]}</h1>) : (<h1>0</h1>)}
+                      {dashItems ? (<h1>{dashItems.count[3]}</h1>) : (<h1>0</h1>)}
                       <div>Balance</div>
                       <div>View Assessment <i className="fad fa-eye"></i></div>
                     </div>
