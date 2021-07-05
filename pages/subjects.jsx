@@ -9,17 +9,17 @@ export default function Subjects() {
 	const [pageLoading, setPageLoading] = useState(false)
 
 	// framer motion config
-	// const container = {
-	//   hidden: { opacity: 1, scale: 0 },
-	//   visible: {
-	//     opacity: 1,
-	//     scale: 1,
-	//     transition: {
-	//       delayChildren: 0.3,
-	//       staggerChildren: 0.2
-	//     }
-	//   }
-	// };
+	const container = {
+	  hidden: { opacity: 1, scale: 0 },
+	  visible: {
+	    opacity: 1,
+	    scale: 1,
+	    transition: {
+	      delayChildren: 0.3,
+	      staggerChildren: 0.2
+	    }
+	  }
+	};
 
 	const containerMotion = {
 	  hidden: { y: 10, opacity: 0 },

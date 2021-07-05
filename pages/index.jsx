@@ -32,6 +32,18 @@ export default function Home() {
     }
   };
 
+  const container = {
+    hidden: { opacity: 0, y: 5 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
 
   // media queries
   const isDesktopOrLaptop = useMediaQuery({
@@ -61,7 +73,7 @@ export default function Home() {
       {pageLoading && (
         <motion.div 
           className="home"
-          variants={containerMotion}
+          variants={container}
           initial="hidden"
           animate="visible"
         >
@@ -86,30 +98,30 @@ export default function Home() {
                   <h5>SY: 2020-2021 SEM: 1</h5>
                 </div>
                 <div className="dash_items">
-                  <div className="dash_item">
+                  <motion.div className="dash_item" variants={containerMotion}>
                     <Book />
                     <div className="dash_item_details">
                       {dashItems ? (<h1>{dashItems.count[0]}</h1>) : (<h1>0</h1>)}
                       <div>Subject/s Enrolled</div>
                       <div>View Schedule <i className="fad fa-eye"></i></div>
                     </div>
-                  </div>
-                  <div className="dash_item">
+                  </motion.div>
+                  <motion.div className="dash_item" variants={containerMotion}>
                     <Ruler />
                     <div className="dash_item_details">
                       {dashItems ? (<h1>{dashItems.count[1]}</h1>) : (<h1>0</h1>)}
                       <div>Total Unit/s</div>
                       <div>View Schedule <i className="fad fa-eye"></i></div>
                     </div>
-                  </div>
-                  <div className="dash_item">
+                  </motion.div>
+                  <motion.div className="dash_item" variants={containerMotion}>
                     <Graph />
                     <div className="dash_item_details">
                       {dashItems ? (<h1>{dashItems.count[2]}</h1>) : (<h1>0</h1>)}
                       <div>GPA</div>
                       <div>View Grades <i className="fad fa-eye"></i></div>
                     </div>
-                  </div>
+                  </motion.div>
                   <div className="dash_item">
                     <Peso />
                     <div className="dash_item_details">

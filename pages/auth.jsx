@@ -54,9 +54,9 @@ export default function Login() {
   	}).then( async (res) => {
   		console.log(res.data)
   		setDashItems(res.data.dashItems)
-  		toast.success("Logging In..", { autoClose: 3000 });
+  		toast.success("Logging In..", { autoClose: 2000 });
   		onLoginHideLoader()
-  		setTimeout(() => router.push("/"), 3000)
+  		setTimeout(() => router.push("/"), 2000)
   	})
   	.catch((err) => {
   		onLoginHideLoader()
