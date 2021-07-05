@@ -4,6 +4,9 @@ import '../styles/login.scss'
 import '../styles/globals.scss'
 import '../styles/nav.scss'
 import '../styles/dashboard.scss'
+import '../styles/subjects.scss'
+import '../styles/grades.scss'
+
 import { DashContext } from '../contexts/DashContext.js'
 
 import { useState } from 'react'

@@ -116,10 +116,12 @@ export default function Nav( props ) {
 							Subjects Enrolled
 						</div>
 					</Link>
-					<div className="nav_sidebar_op">
-						<i className="fal fa-user-graduate"></i>
-						Grades
-					</div>
+					<Link href="/grades">
+						<div className={`nav_sidebar_op ${ props.page == 4 ? 'currentpage' : ''}`}>
+							<i className="fal fa-user-graduate"></i>
+							Grades
+						</div>
+					</Link>
 					<div className="nav_sidebar_op">
 						<i className="fal fa-address-card"></i>
 						Assessment

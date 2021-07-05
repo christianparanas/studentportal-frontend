@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 // components
 import Nav from '../components/Nav'
 
-export default function Subjects() {
+export default function Grades() {
 	const [pageLoading, setPageLoading] = useState(false)
 
 	// framer motion config
@@ -53,10 +53,10 @@ export default function Subjects() {
 				>
 					{isMobile && 
 						<>
-							<Nav page={3} />
+							<Nav page={4} />
 
-							<div className="subjects_wrapper">
-								<p>Subs</p>	
+							<div className="grades_wrapper">
+								<p>Grades</p>	
 							</div>
 						</>
 					}
