@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { Squeeze  as Hamburger } from 'hamburger-react'
+import Link from 'next/link'
 
 // components
 import Student from './svg/Student'
@@ -97,18 +98,24 @@ export default function Nav( props ) {
 				</div>
 
 				<div className="nav_sidebar_options">
-					<div className={`nav_sidebar_op ${ props.page == 1 ? 'currentpage' : ''}`}>
-						<i className="fal fa-desktop-alt"></i>
-					  Dashboard
-					</div>
-					<div className="nav_sidebar_op">
-						<i className="fal fa-gift"></i>
-						Free Education
-					</div>
-					<div className="nav_sidebar_op">
-						<i className="fal fa-book-open"></i>
-						Subjects Enrolled
-					</div>
+					<Link href="/">
+						<div className={`nav_sidebar_op ${ props.page == 1 ? 'currentpage' : ''}`}>
+							<i className="fal fa-desktop-alt"></i>
+						  Dashboard
+						</div>
+					</Link>
+					<Link href="/subjects">
+						<div className={`nav_sidebar_op ${ props.page == 2 ? 'currentpage' : ''}`}>
+							<i className="fal fa-gift"></i>
+							Free Education
+						</div>
+					</Link>
+					<Link href="/subjects">
+						<div className={`nav_sidebar_op ${ props.page == 3 ? 'currentpage' : ''}`}>
+							<i className="fal fa-book-open"></i>
+							Subjects Enrolled
+						</div>
+					</Link>
 					<div className="nav_sidebar_op">
 						<i className="fal fa-user-graduate"></i>
 						Grades

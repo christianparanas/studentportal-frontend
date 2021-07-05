@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "framer-motion": "^4.1.17",
     "hamburger-react": "^2.4.1",
     "next": "10.2.3",
     "node-sass": "5.0.0",

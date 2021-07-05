@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useState, useRef, useEffect, useContext } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
+import { motion } from "framer-motion";
 
 // contexts
 import { DashContext } from '../contexts/DashContext.js'
@@ -21,6 +22,15 @@ export default function Home() {
   const { dashItems, setDashItems } = useContext(DashContext)
   const router = useRouter()
   const [pageLoading, setPageLoading] = useState(false);
+
+  // framer motion config
+  const containerMotion = {
+    hidden: { y: 10, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
 
 
   // media queries
@@ -49,7 +59,12 @@ export default function Home() {
   return (
     <>
       {pageLoading && (
-        <div className="home">
+        <motion.div 
+          className="home"
+          variants={containerMotion}
+          initial="hidden"
+          animate="visible"
+        >
           <Head>
             <title>Student Dashboard</title>
             <link rel="icon" href="https://apps.evsu.edu.ph/assets/img/favicon.ico" />
@@ -107,7 +122,7 @@ export default function Home() {
               </div>
             </>
           }
-        </div>
+        </motion.div>
       )}
     </>
   )

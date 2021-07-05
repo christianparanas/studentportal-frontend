@@ -67,12 +67,6 @@ export default function Login() {
 	return (
 		<div className="login">
 			<ToastContainer />
-
-			{isDesktopOrLaptop && 
-        <div className="desktop_under_construct">
-          <p>Hi, currently this website is only available for mobile user with 450 pixels screen and below. Thank you.</p>
-        </div>
-      }
 			
 			<div className="content_wrapper">
 				<div className="header">
