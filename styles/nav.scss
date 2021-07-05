@@ -44,8 +44,9 @@
 			display: grid;
 			grid-template-rows: 160px 100px;
 			border-radius: 10px;
-			display: none;
 			transition: all .3s ease;
+			transform:translate(9999px);
+  opacity: 0;  
 
 			.dropImg {
 				text-align: center;
@@ -93,7 +94,9 @@
 		}
 
 		.showDrop {
-			display: block;
+			transition: opacity .3s linear;  
+  transform:translate(0);
+  opacity: 1;
 		}
 
 		.nav_options {
