@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { Squeeze  as Hamburger } from 'hamburger-react'
 import Link from 'next/link'
+import { motion } from "framer-motion";
 
 // components
 import Student from './svg/Student'
@@ -21,17 +22,35 @@ export default function Nav( props ) {
 	const [dropOv, setDropOv] = useState('dropBox')
 	const [dropIco, setDropIco] = useState("far fa-sort-down")
 
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+	const menuItemVariants = {
+	  open: { y: 0, opacity: 1 },
+	  closed: { y: 10, opacity: 0 }
+	};
+
+	const parentVariant = {
+	  open: {
+	    transition: { staggerChildren: 0.5, delayChildren: 0.2 }
+	  },
+	  closed: {
+	    transition: { staggerChildren: 0.3, staggerDirection: -1 }
+	  }
+	};
+
 
 	const closeSidebar = () => {
 		setClickoutside('clickoutside_overlay')
 		setSidebar('nav_sidebar')
 		setOpen(false)
+		setIsSidebarOpen(false)
 
 	}
 
 	const openSidebar = () => {
 		setClickoutside('clickoutside_overlay show_clickoutside_overlay')
 		setSidebar('nav_sidebar show_nav_sidebar')
+		setIsSidebarOpen(true)
 	}
 
 	const openDrop = () => {
@@ -97,40 +116,40 @@ export default function Nav( props ) {
 					</div>
 				</div>
 
-				<div className="nav_sidebar_options">
+				<motion.div className="nav_sidebar_options" variants={parentVariant} animate={isSidebarOpen ? 'open' : 'closed'}>
 					<Link href="/">
-						<div className={`nav_sidebar_op ${ props.page == 1 ? 'currentpage' : ''}`}>
+						<motion.div variants={menuItemVariants} animate={isSidebarOpen ? 'open' : 'closed'} className={`nav_sidebar_op ${ props.page == 1 ? 'currentpage' : ''}`}>
 							<i className="fal fa-desktop-alt"></i>
 						  Dashboard
-						</div>
+						</motion.div>
 					</Link>
 					<Link href="/subjects">
-						<div className={`nav_sidebar_op ${ props.page == 2 ? 'currentpage' : ''}`}>
+						<motion.div variants={menuItemVariants} animate={isSidebarOpen ? 'open' : 'closed'} className={`nav_sidebar_op ${ props.page == 2 ? 'currentpage' : ''}`}>
 							<i className="fal fa-gift"></i>
 							Free Education
-						</div>
+						</motion.div>
 					</Link>
 					<Link href="/subjects">
-						<div className={`nav_sidebar_op ${ props.page == 3 ? 'currentpage' : ''}`}>
+						<motion.div variants={menuItemVariants} animate={isSidebarOpen ? 'open' : 'closed'} className={`nav_sidebar_op ${ props.page == 3 ? 'currentpage' : ''}`}>
 							<i className="fal fa-book-open"></i>
 							Subjects Enrolled
-						</div>
+						</motion.div>
 					</Link>
 					<Link href="/grades">
-						<div className={`nav_sidebar_op ${ props.page == 4 ? 'currentpage' : ''}`}>
+						<motion.div variants={menuItemVariants} animate={isSidebarOpen ? 'open' : 'closed'} className={`nav_sidebar_op ${ props.page == 4 ? 'currentpage' : ''}`}>
 							<i className="fal fa-user-graduate"></i>
 							Grades
-						</div>
+						</motion.div>
 					</Link>
-					<div className="nav_sidebar_op">
+					<motion.div variants={menuItemVariants} animate={isSidebarOpen ? 'open' : 'closed'} className="nav_sidebar_op">
 						<i className="fal fa-address-card"></i>
 						Assessment
-					</div>
-					<div className="nav_sidebar_op">
+					</motion.div>
+					<motion.div variants={menuItemVariants} animate={isSidebarOpen ? 'open' : 'closed'} className="nav_sidebar_op">
 						<i className="fal fa-bookmark"></i>
 						Ledger
-					</div>
-				</div>
+					</motion.div>
+				</motion.div>
 			</div>			
 		</div>
 	)
