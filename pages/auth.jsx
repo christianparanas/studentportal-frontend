@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 
 // contexts
 import { DashContext } from '../contexts/DashContext.js'
@@ -62,6 +62,12 @@ export default function Login() {
   		if(err.response.status == 401) { toast.error("Invalid Credentials", { autoClose: 3000 })}
   	})
   }
+
+  useEffect(() => {
+  	// Prefetch the dashboard page
+    router.prefetch('/')
+
+  }, [])
 
 	return (
 		<div className="login">
