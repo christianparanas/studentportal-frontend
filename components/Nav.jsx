@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react'
 import { Squeeze  as Hamburger } from 'hamburger-react'
 import Link from 'next/link'
 import { motion } from "framer-motion";
+import { useRouter } from 'next/router'
 
 // components
 import Student from './svg/Student'
@@ -11,8 +12,9 @@ import { DashContext } from '../contexts/DashContext.js'
 
 
 export default function Nav( props ) {
+	const router = useRouter()
 	const [isOpen, setOpen] = useState(false)
-	const { dashItems, setDashItems } = useContext(DashContext)
+	const { dashItems, setDashItems, isAuth, setIsAuth } = useContext(DashContext)
 
 	// class vars
 	const [sidebar, setSidebar] = useState('nav_sidebar')
@@ -64,12 +66,22 @@ export default function Nav( props ) {
 		
 	}
 
+	const logout = () => {
+		setIsAuth(false)
+	}
+
 	useEffect(() => {
 		if(isOpen) {
 			openSidebar()
 		} 
 
-	}, [isOpen])
+		if(!isAuth) {
+			router.push('/auth')
+		}
+
+		console.log(isAuth)
+
+	}, [isOpen, isAuth])
 
 
 
@@ -98,7 +110,7 @@ export default function Nav( props ) {
 						<div className="op"><i className="fal fa-image-polaroid"></i> Update Photo</div>
 						<div className="op"><i className="fal fa-cog"></i> Account Settings</div>
 						<div className="op oo"><i className="fal fa-lock"></i> Change Password</div>
-						<div className="op out">Logout <i className="fad fa-sign-out"></i> </div>
+						<div onClick={logout} className="op out">Logout <i className="fad fa-sign-out"></i> </div>
 					</div>
 				</div>
 			</div>

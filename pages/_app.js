@@ -13,6 +13,7 @@ import { useState } from 'react'
 
 function MyApp({ Component, pageProps }) {
   const [dashItems, setDashItems] = useState([])
+  const [isAuth, setIsAuth] = useState(false)
 
   return (
     <>
@@ -21,7 +22,7 @@ function MyApp({ Component, pageProps }) {
         <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@bf7775b/css/all.css" rel="stylesheet" type="text/css" />
       </Head>
 
-      <DashContext.Provider value={{ dashItems, setDashItems }}>
+      <DashContext.Provider value={{ dashItems, setDashItems, isAuth, setIsAuth }}>
         <Component {...pageProps} />
       </DashContext.Provider>
     </>

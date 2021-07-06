@@ -22,7 +22,7 @@ export default function Login() {
 	const [loginLoaderTxt, setLoginLoaderTxt] = useState("loginTxtnIco")
 
 	// using the context
-	const { dashItems, setDashItems } = useContext(DashContext)
+	const { isAuth, setIsAuth } = useContext(DashContext)
 
 	  // media queries
   const isDesktopOrLaptop = useMediaQuery({
@@ -55,6 +55,7 @@ export default function Login() {
   		console.log(res.data)
   		toast.success("Logging In..", { autoClose: 2000 });
   		onLoginHideLoader()
+  		setIsAuth(true)
   		setTimeout(() => router.push("/"), 2000)
   	})
   	.catch((err) => {

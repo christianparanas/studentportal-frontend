@@ -40,7 +40,7 @@
 			top: 125px;
 			right: 5px;
 			width: 180px;
-			height: 285px;
+			height: 290px;
 			display: grid;
 			grid-template-rows: 160px 100px;
 			border-radius: 10px;
@@ -84,10 +84,15 @@
 				}
 
 				.out {
-					text-align: end;
+					background: #ff5757;
+					color: #fff;
+					width: fit-content;
+					padding: 4px 10px;
+					border-radius: 8px;
+					margin-left: auto;
 
 					i {
-						margin-left: 2px;
+						margin: 0 0 0 2px;
 					}
 				}
 			}

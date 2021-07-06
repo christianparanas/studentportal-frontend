@@ -20,7 +20,7 @@ import Peso from '../components/svg/Peso'
 
 
 export default function Home() {
-  const { dashItems, setDashItems } = useContext(DashContext)
+  const { dashItems, setDashItems, isAuth, setIsAuth } = useContext(DashContext)
   const router = useRouter()
   const [pageLoading, setPageLoading] = useState(false);
 
@@ -71,7 +71,7 @@ export default function Home() {
   useEffect(() => {
     loadDashApi()
 
-    if(dashItems.length == 0) { 
+    if(!isAuth) { 
       router.push("/auth") 
     } else {
       setPageLoading(true)
