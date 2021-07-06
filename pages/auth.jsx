@@ -47,13 +47,12 @@ export default function Login() {
   const onSubmit = (data, e) => {
   	onLoginShowLoader()
 
-  	axios.post(process.env.BACKEND_BASEURL + "/login", {
+  	axios.post(process.env.BACKEND_BASEURL + "/auth", {
   		studentID: data.studentID,
   		password: data.password
 
   	}).then( async (res) => {
   		console.log(res.data)
-  		setDashItems(res.data.dashItems)
   		toast.success("Logging In..", { autoClose: 2000 });
   		onLoginHideLoader()
   		setTimeout(() => router.push("/"), 2000)

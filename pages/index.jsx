@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useContext } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { useRouter } from 'next/router'
 import { motion } from "framer-motion";
+import axios from 'axios'
 
 // contexts
 import { DashContext } from '../contexts/DashContext.js'
@@ -22,6 +23,8 @@ export default function Home() {
   const { dashItems, setDashItems } = useContext(DashContext)
   const router = useRouter()
   const [pageLoading, setPageLoading] = useState(false);
+
+
 
   // framer motion config
   const containerMotion = {
@@ -54,8 +57,19 @@ export default function Home() {
     query: '(max-device-width: 450px)'
   })
 
+  const loadDashApi = () => {
+    axios.get(process.env.BACKEND_BASEURL + "/")
+      .then((res) => {
+        console.log(res.data)
+        setDashItems(res.data.data)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
   useEffect(() => {
-    console.log(dashItems)
+    loadDashApi()
 
     if(dashItems.length == 0) { 
       router.push("/auth") 
@@ -64,9 +78,6 @@ export default function Home() {
     }
 
   }, [])
-
-
-
 
   return (
     <>
