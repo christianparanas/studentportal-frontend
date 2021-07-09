@@ -1,12 +1,14 @@
 import { useState, useEffect, useContext } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { motion } from "framer-motion";
+import axios from 'axios'
 
 // components
 import Nav from '../components/Nav'
 
 export default function Grades() {
 	const [pageLoading, setPageLoading] = useState(false)
+	const [gradesArr, setGradesArr] = useState([])
 
 	// framer motion config
 	const container = {
@@ -38,9 +40,20 @@ export default function Grades() {
     query: '(max-device-width: 450px)'
   })
 
+  const loadGrades = () => {
+  	axios.get(process.env.BACKEND_BASEURL + "/grades")
+  		.then(res => {
+  			console.log(res.data.data)
+  			setGradesArr(res.data.data)
+  		})
+  		.catch(err => {
+  			console.log(err)
+  		})
+  }
+
 	useEffect(() => {
 		setPageLoading(true)
-
+		loadGrades()
 	}, [])
 
 	return (
@@ -56,7 +69,28 @@ export default function Grades() {
 							<Nav page={4} />
 
 							<div className="grades_wrapper">
-								<p>Grades</p>	
+								{gradesArr.map((value, key) => {
+									return (
+										<div className="grades_panel" key={key}>
+											<div className="head">{value.head}</div>
+											<div className="content">
+												{value.con.map((val, keyy) => {
+													return (
+														<div className="outer" key={keyy}>
+															{val['z'].map((vall, keyyy) => {
+																return (
+																	<div className="inner" key={keyyy}>
+																		{vall}
+																	</div>
+																)
+															})}
+														</div>
+													)
+												})}
+											</div>
+										</div>
+									)
+								})}
 							</div>
 						</>
 					}

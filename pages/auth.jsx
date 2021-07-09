@@ -52,7 +52,7 @@ export default function Login() {
   		password: data.password
 
   	}).then( async (res) => {
-  		console.log(res.data)
+  		console.log(res)
   		toast.success("Logging In..", { autoClose: 2000 });
   		onLoginHideLoader()
   		setIsAuth(true)

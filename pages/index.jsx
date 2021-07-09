@@ -57,25 +57,27 @@ export default function Home() {
     query: '(max-device-width: 450px)'
   })
 
+  const logout = () => {
+    router.push("/auth")
+  }
+
   const loadDashApi = () => {
     axios.get(process.env.BACKEND_BASEURL + "/")
-      .then((res) => {
+      .then( async (res) => {
         console.log(res.data)
-        setDashItems(res.data.data)
+        await setDashItems(res.data.data)
+        setPageLoading(true)
       })
       .catch((err) => {
-        console.error(err)
+        console.error(err.response.status)
+        if(err.response.status ==  401) {
+          logout()
+        }
       })
   }
 
   useEffect(() => {
     loadDashApi()
-
-    if(!isAuth) { 
-      router.push("/auth") 
-    } else {
-      setPageLoading(true)
-    }
 
   }, [])
 

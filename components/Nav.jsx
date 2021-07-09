@@ -70,16 +70,13 @@ export default function Nav( props ) {
 		setIsAuth(false)
 	}
 
+
+
 	useEffect(() => {
 		if(isOpen) {
 			openSidebar()
 		} 
 
-		if(!isAuth) {
-			router.push('/auth')
-		}
-
-		console.log(isAuth)
 
 	}, [isOpen, isAuth])
 
