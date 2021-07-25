@@ -24,11 +24,26 @@
 
 			.outer {
 				display: grid;
-				grid-template-columns: 50px 50px 100px 50px 200px;
+				grid-template-columns: 50px 50px 100px 50px 250px;
 				margin-bottom: 5px;
+				background: #e3e3e338;
 
 				.inner {
+					padding: 4px 10px;
+				}
+			}
 
+			& > div:nth-child(even) {
+				background: #fff;
+			}
+
+			& > div:nth-child(1) {
+				color: white;
+				width: 100%;
+				box-sizing: border-box;
+
+				.inner {
+					background: #310F74;
 				}
 			}
 		}
