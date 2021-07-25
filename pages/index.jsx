@@ -64,7 +64,6 @@ export default function Home() {
   const loadDashApi = () => {
     axios.get(process.env.BACKEND_BASEURL + "/")
       .then( async (res) => {
-        console.log(res.data)
         await setDashItems(res.data.data)
         setPageLoading(true)
       })

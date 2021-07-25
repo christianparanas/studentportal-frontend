@@ -43,7 +43,6 @@ export default function Grades() {
   const loadGrades = () => {
   	axios.get(process.env.BACKEND_BASEURL + "/grades")
   		.then(res => {
-  			console.log(res.data.data)
   			setGradesArr(res.data.data)
   		})
   		.catch(err => {
