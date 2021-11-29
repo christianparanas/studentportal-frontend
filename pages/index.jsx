@@ -1,38 +1,36 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { useState, useRef, useEffect, useContext } from 'react'
-import { useMediaQuery } from 'react-responsive'
-import { useRouter } from 'next/router'
+import Head from "next/head";
+import Image from "next/image";
+import { useState, useRef, useEffect, useContext } from "react";
+import { useMediaQuery } from "react-responsive";
+import { useRouter } from "next/router";
 import { motion } from "framer-motion";
-import axios from 'axios'
+import axios from "axios";
 
 // contexts
-import { DashContext } from '../contexts/DashContext.js'
+import { DashContext } from "../contexts/DashContext.js";
 
 // components
-import Nav from '../components/Nav'
+import Nav from "../components/Nav";
 
 // svgs
-import Book from '../components/svg/Book'
-import Ruler from '../components/svg/Ruler'
-import Graph from '../components/svg/Graph'
-import Peso from '../components/svg/Peso'
-
+import Book from "../components/svg/Book";
+import Ruler from "../components/svg/Ruler";
+import Graph from "../components/svg/Graph";
+import Peso from "../components/svg/Peso";
 
 export default function Home() {
-  const { dashItems, setDashItems, isAuth, setIsAuth } = useContext(DashContext)
-  const router = useRouter()
+  const { dashItems, setDashItems, isAuth, setIsAuth } =
+    useContext(DashContext);
+  const router = useRouter();
   const [pageLoading, setPageLoading] = useState(false);
-
-
 
   // framer motion config
   const containerMotion = {
     hidden: { y: 10, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1
-    }
+      opacity: 1,
+    },
   };
 
   const container = {
@@ -42,48 +40,47 @@ export default function Home() {
       y: 0,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
-
 
   // media queries
   const isDesktopOrLaptop = useMediaQuery({
-    query: '(min-device-width: 451px)'
-  })
+    query: "(min-device-width: 451px)",
+  });
 
   const isMobile = useMediaQuery({
-    query: '(max-device-width: 450px)'
-  })
+    query: "(max-device-width: 450px)",
+  });
 
   const logout = () => {
-    router.push("/auth")
-  }
+    router.push("/auth");
+  };
 
   const loadDashApi = () => {
-    axios.get(process.env.BACKEND_BASEURL + "/")
-      .then( async (res) => {
-        await setDashItems(res.data.data)
-        setPageLoading(true)
+    axios
+      .get(process.env.BACKEND_BASEURL + "/")
+      .then(async (res) => {
+        await setDashItems(res.data.data);
+        setPageLoading(true);
       })
       .catch((err) => {
-        console.error(err.response.status)
-        if(err.response.status ==  401) {
-          logout()
+        console.error(err.response.status);
+        if (err.response.status == 401) {
+          logout();
         }
-      })
-  }
+      });
+  };
 
   useEffect(() => {
-    loadDashApi()
-
-  }, [])
+    loadDashApi();
+  }, []);
 
   return (
     <>
       {pageLoading && (
-        <motion.div 
+        <motion.div
           className="home"
           variants={container}
           initial="hidden"
@@ -91,20 +88,25 @@ export default function Home() {
         >
           <Head>
             <title>Student Dashboard</title>
-            <link rel="icon" href="https://apps.evsu.edu.ph/assets/img/favicon.ico" />
+            <link
+              rel="icon"
+              href="https://apps.evsu.edu.ph/assets/img/favicon.ico"
+            />
           </Head>
 
-          {isDesktopOrLaptop && 
+          {isDesktopOrLaptop && (
             <div className="desktop_under_construct">
-              <p>Hi, currently this website is only available for mobile user with 450 pixels screen and below. Thank you.</p>
+              <p>
+                Hi, currently this website is only available for mobile user
+                with 450 pixels screen and below. Thank you.
+              </p>
             </div>
-          }
+          )}
 
-          {isMobile && 
+          {isMobile && (
             <>
               <Nav page={1} />
               <div className="dash_wrapper">
-                
                 <div className="header">
                   <h3>Dashboard</h3>
                   <h5>SY: 2020-2021 SEM: 1</h5>
@@ -113,41 +115,49 @@ export default function Home() {
                   <motion.div className="dash_item" variants={containerMotion}>
                     <Book />
                     <div className="dash_item_details">
-                      {dashItems ? (<h1>{dashItems.count[0]}</h1>) : (<h1>0</h1>)}
+                      {dashItems ? <h1>{dashItems.count[0]}</h1> : <h1>0</h1>}
                       <div>Subject/s Enrolled</div>
-                      <div>View Schedule <i className="fad fa-eye"></i></div>
+                      <div>
+                        View Schedule <i className="fad fa-eye"></i>
+                      </div>
                     </div>
                   </motion.div>
                   <motion.div className="dash_item" variants={containerMotion}>
                     <Ruler />
                     <div className="dash_item_details">
-                      {dashItems ? (<h1>{dashItems.count[1]}</h1>) : (<h1>0</h1>)}
+                      {dashItems ? <h1>{dashItems.count[1]}</h1> : <h1>0</h1>}
                       <div>Total Unit/s</div>
-                      <div>View Schedule <i className="fad fa-eye"></i></div>
+                      <div>
+                        View Schedule <i className="fad fa-eye"></i>
+                      </div>
                     </div>
                   </motion.div>
                   <motion.div className="dash_item" variants={containerMotion}>
                     <Graph />
                     <div className="dash_item_details">
-                      {dashItems ? (<h1>{dashItems.count[2]}</h1>) : (<h1>0</h1>)}
+                      {dashItems ? <h1>{dashItems.count[2]}</h1> : <h1>0</h1>}
                       <div>GPA</div>
-                      <div>View Grades <i className="fad fa-eye"></i></div>
+                      <div>
+                        View Grades <i className="fad fa-eye"></i>
+                      </div>
                     </div>
                   </motion.div>
                   <div className="dash_item">
                     <Peso />
                     <div className="dash_item_details">
-                      {dashItems ? (<h1>{dashItems.count[3]}</h1>) : (<h1>0</h1>)}
+                      {dashItems ? <h1>{dashItems.count[3]}</h1> : <h1>0</h1>}
                       <div>Balance</div>
-                      <div>View Assessment <i className="fad fa-eye"></i></div>
+                      <div>
+                        View Assessment <i className="fad fa-eye"></i>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </>
-          }
+          )}
         </motion.div>
       )}
     </>
-  )
+  );
 }
