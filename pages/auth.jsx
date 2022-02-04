@@ -10,11 +10,11 @@ import { useState, useContext, useEffect } from "react";
 import { DashContext } from "../contexts/DashContext.js";
 
 // conponents
-import Student from "../components/svg/Student";
+import { Student } from "../components/svg";
 
 export default function Login() {
   const router = useRouter();
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit } = useForm();
 
   // login btn loader
   const [loginLoader, setLoginLoader] = useState("loader");
@@ -38,7 +38,7 @@ export default function Login() {
   };
 
   const onLoginHideLoader = () => {
-    setLoginLoaderTxt(" loginTxtnIco");
+    setLoginLoaderTxt("loginTxtnIco");
     setLoginLoader("loader");
   };
 

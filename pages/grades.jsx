@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 
 // components
-import Nav from "../components/Nav";
+import {Nav} from "../components";
 
 export default function Grades() {
   const [pageLoading, setPageLoading] = useState(false);

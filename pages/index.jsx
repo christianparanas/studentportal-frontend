@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { useState, useRef, useEffect, useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useRouter } from "next/router";
@@ -10,13 +9,10 @@ import axios from "axios";
 import { DashContext } from "../contexts/DashContext.js";
 
 // components
-import Nav from "../components/Nav";
+import { Nav } from "../components";
 
 // svgs
-import Book from "../components/svg/Book";
-import Ruler from "../components/svg/Ruler";
-import Graph from "../components/svg/Graph";
-import Peso from "../components/svg/Peso";
+import { Book, Ruler, Graph, Peso } from "../components/svg";
 
 export default function Home() {
   const { dashItems, setDashItems, isAuth, setIsAuth } =

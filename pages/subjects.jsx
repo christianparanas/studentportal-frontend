@@ -3,7 +3,7 @@ import { useMediaQuery } from "react-responsive";
 import { motion } from "framer-motion";
 
 // components
-import Nav from "../components/Nav";
+import { Nav } from "../components";
 
 export default function Subjects() {
   const [pageLoading, setPageLoading] = useState(false);
